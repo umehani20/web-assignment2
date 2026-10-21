@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gateway Travels - Information & Tour Packages</title>
+    <!-- Google Material Symbols Link -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=chevron_right" />
+    <style>
+        /* --- Internal CSS for info.html --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+            background-color: #f9f9f9;
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* --- Header & Hero Section --- */
+        .hero-header {
+            position: relative;
+            width: 100%;
+            min-height: 85vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            color: #fff;
+            overflow: hidden;
+        }
+
+        .hero-bg-img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -2;
+        }
+
+        .hero-header::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            z-index: -1;
+        }
+
+        /* --- Navigation Bar --- */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 25px 60px;
+            width: 100%;
+        }
+
+        .logo a {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #fff;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 35px;
+        }
+
+        .nav-links a {
+            font-size: 1rem;
+            font-weight: 500;
+            color: rgba(255, 255, 255, 0.85);
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #fff;
+            font-weight: 600;
+        }
+
+        /* --- Hero Content Banner --- */
+        .hero-content {
+            max-width: 800px;
+            padding: 0 60px 80px 60px;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero-content p {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .btn-primary {
+            display: inline-block;
+            background-color: #ffffff;
+            color: #111;
+            padding: 12px 28px;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: #f0f0f0;
+            transform: translateY(-2px);
+        }
+
+        /* --- Information Content Section --- */
+        .info-container {
+            max-width: 1200px;
+            margin: 80px auto;
+            padding: 0 20px;
+        }
+
+        .info-container h2 {
+            font-size: 2.2rem;
+            text-align: center;
+            margin-bottom: 50px;
+            color: #1a1a1a;
+        }
+
+        .destination-detail-card {
+            background: #fff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            margin-bottom: 40px;
+            display: flex;
+            flex-direction: row;
+        }
+
+        .destination-detail-card img {
+            width: 45%;
+            height: 320px;
+            object-fit: cover;
+        }
+
+        .detail-content {
+            width: 55%;
+            padding: 35px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .detail-content h3 {
+            font-size: 1.8rem;
+            color: #1a1a1a;
+        }
+
+        .detail-tagline {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #555;
+        }
+
+        .detail-overview {
+            font-size: 0.95rem;
+            color: #666;
+        }
+
+        .attractions-list {
+            margin-top: 10px;
+            padding-left: 20px;
+            list-style-type: disc;
+            color: #444;
+            font-size: 0.95rem;
+        }
+
+        .attractions-list li {
+            margin-bottom: 6px;
+        }
+
+        /* --- Pricing Table Section --- */
+        .pricing-section {
+            margin: 80px 0;
+        }
+
+        .pricing-section h3 {
+            font-size: 1.8rem;
+            text-align: center;
+            margin-bottom: 30px;
+            color: #1a1a1a;
+        }
+
+        .pricing-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: #fff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .pricing-table th, .pricing-table td {
+            padding: 18px 20px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+
+        .pricing-table th {
+            background-color: #1a1a1a;
+            color: #fff;
+            font-weight: 600;
+        }
+
+        .pricing-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .pricing-table tr:hover {
+            background-color: #f8f9fa;
+        }
+
+        /* --- Footer --- */
+        footer {
+            background-color: #1a1a1a;
+            color: #ccc;
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 600px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            font-size: 0.95rem;
+        }
+
+        .footer-content strong {
+            color: #fff;
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+
+        .copyright {
+            margin-top: 20px;
+            font-size: 0.85rem;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header & Hero Section -->
+    <header class="hero-header">
+        <!-- Hero Background Image -->
+        <img src="../images/info.jpg" alt="Scenic landscape of Northern Pakistan" class="hero-bg-img" width="1920" height="1080">
+
+        <!-- Navigation Bar -->
+        <nav class="navbar">
+            <div class="logo">
+                <a href="../index.html">Gateway Travels</a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="info.html" class="active">Information</a></li>
+                <li><a href="../booking/booking.html">Booking</a></li>
+            </ul>
+        </nav>
+
+        <!-- Hero Welcome Banner -->
+        <div class="hero-content">
+            <h1>Information & Destination Guide</h1>
+            <p>
+                Comprehensive details, highlights, itineraries, and package pricing for our featured northern destinations: Skardu, Naran & Kaghan, and Swat.
+            </p>
+            <a href="../booking/booking.html" class="btn-primary">Book Your Escape</a>
+        </div>
+    </header>
+
+    <!-- Destination Information Section -->
+    <main class="info-container">
+        <h2>Explore Our Featured Destinations</h2>
+
+        <!-- Destination 1: Skardu -->
+        <div class="destination-detail-card">
+            <img src="../images/info_page/skardu_info.jpg" alt="Skardu Valley and Shangrila Resort view" width="600" height="400">
+            <div class="detail-content">
+                <h3>Skardu & Shangrila Expedition</h3>
+                <p class="detail-tagline">Majestic Cold Desert & Alpine Lakes</p>
+                <p class="detail-overview">
+                    Nestled high in the Karakoram range, Skardu is the gateway to some of the highest peaks in the world, including K2. Known for its surreal contrast of sand dunes surrounded by snow-capped mountains, turquoise lakes, and historic forts, Skardu offers an unforgettable alpine adventure.
+                </p>
+                <ul class="attractions-list">
+                    <li><strong>Shangrila Resort & Lower Kachura Lake:</strong> Heart-shaped lake surrounded by serene resorts.</li>
+                    <li><strong>Katpana Cold Desert:</strong> High-altitude desert dunes covered with snow in winter.</li>
+                    <li><strong>Deosai National Park:</strong> "Land of the Giants," the second-highest plateau in the world.</li>
+                    <li><strong>Satpara Lake & Shigar Fort:</strong> Crystal clear glacier water lakes and 17th-century heritage.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Destination 2: Naran -->
+        <div class="destination-detail-card">
+            <img src="../images/info_page/naran_info.jpg" alt="Saif-ul-Malook Lake and mountains" width="600" height="400">
+            <div class="detail-content">
+                <h3>Naran & Kaghan Valley Escape</h3>
+                <p class="detail-tagline">Crystal Clear Lakes & Mountain Pass Views</p>
+                <p class="detail-overview">
+                    Located in the Mansehra District of Khyber Pakhtunkhwa, Naran & Kaghan Valleys are among Pakistan’s most celebrated natural retreats. Featuring dense pine forests, roaring river waters, and glacial lakes, Naran is ideal for couples, families, and nature enthusiasts.
+                </p>
+                <ul class="attractions-list">
+                    <li><strong>Lake Saif-ul-Malook:</strong> Legendary high-altitude lake reflecting Malika Parbat peak.</li>
+                    <li><strong>Babusar Top:</strong> Panoramic mountain pass sitting at 13,691 ft connecting Kaghan to Gilgit-Baltistan.</li>
+                    <li><strong>Lulusar Lake & Lalazar:</strong> Vibrant alpine lake and meadows with wildflower displays.</li>
+                    <li><strong>Siri Paye Meadows:</strong> A serene grassland plateau above Shogran.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Destination 3: Swat -->
+        <div class="destination-detail-card">
+            <img src="../images/info_page/swat_info.jpg" alt="Swat River and Kalam Valley landscape" width="600" height="400">
+            <div class="detail-content">
+                <h3>Swat & Kalam Retreat</h3>
+                <p class="detail-tagline">Lush Pine Forests & Cascading Waterfalls</p>
+                <p class="detail-overview">
+                    Often called the "Switzerland of the East," Swat Valley boasts rich Buddhist history, lush green river meadows, dense pine woodlands, and snow-capped mountain peaks. Kalam Valley serves as the crown jewel of northern Swat, offering cool mountain breezes and crystal streams.
+                </p>
+                <ul class="attractions-list">
+                    <li><strong>Malam Jabba:</strong> Pakistan’s premier ski resort area featuring zip-lining and chairlifts.</li>
+                    <li><strong>Kalam Valley & Ushu Forest:</strong> Ancient forest trees, scenic river banks, and mountain hospitality.</li>
+                    <li><strong>Mahodand & Kundol Lakes:</strong> Glacial lakes accessible via 4x4 jeep trails.</li>
+                    <li><strong>Fizagat Park & Swat Museum:</strong> Local cultural centers and riverside relaxing spots.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Pricing Summary Table -->
+        <section class="pricing-section">
+            <h3>Tour Packages Summary Table</h3>
+            <table class="pricing-table">
+                <thead>
+                    <tr>
+                        <th>Destination</th>
+                        <th>Duration</th>
+                        <th>Key Inclusions</th>
+                        <th>Starting Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Swat & Kalam Retreat</strong></td>
+                        <td>4 Days / 3 Nights</td>
+                        <td>Dedicated Transport, 3-Star Hotel, Daily Breakfast, Local Guide</td>
+                        <td>PKR 35,000 / person</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Naran & Kaghan Escape</strong></td>
+                        <td>5 Days / 4 Nights</td>
+                        <td>Transport, Lake Saif-ul-Malook Jeep Safari, Hotel Stay, Meals</td>
+                        <td>PKR 45,000 / person</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Skardu & Shangrila Expedition</strong></td>
+                        <td>7 Days / 6 Nights</td>
+                        <td>Flight/AC Coaster Transport, 4-Star Hotel, Meals, All Jeep Transfers</td>
+                        <td>PKR 85,000 / person</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <p><strong>Gateway Travels</strong></p>
+            <p>Phone / WhatsApp: +92 300 1234567</p>
+            <p>Email: info@gatewaytravels.com</p>
+            <p>Address: Main Boulevard, Gulberg III, Lahore, Pakistan[cite: 5]</p>
+            <p class="copyright">&copy; 2026 Gateway Travels. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
